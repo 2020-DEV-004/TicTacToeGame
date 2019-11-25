@@ -15,6 +15,12 @@ public class Board {
 	         }
 	      }
 	   }
-	 
+	   public void init() {
+		      for (int row = 0; row < ROWS; ++row) {
+		         for (int col = 0; col < COLS; ++col) {
+		            cells[row][col].clear();  // clear the cell content
+		         }
+		      }
+		   }
 
 }

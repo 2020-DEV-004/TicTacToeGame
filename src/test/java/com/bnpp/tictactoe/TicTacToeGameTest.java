@@ -34,4 +34,9 @@ public class TicTacToeGameTest {
 		int cols = game.board.cells[0].length;
 		assertEquals(3, cols);
 	}
+	
+	@Test
+	public void playerOneMustBeCrossWhenGameStarted() {
+		assertEquals (Seed.CROSS,game.currentPlayer);
+	}
 }
