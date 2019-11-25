@@ -25,7 +25,7 @@ Test case reports can bbe found at
 <PROJECT_ROOT_FOLDER>\target\surefire-reports\
 
 ```
-How to Run the application
+#How to Run the application
 ```
 After successful maven build
 Goto <ProjectDirectory>\target
