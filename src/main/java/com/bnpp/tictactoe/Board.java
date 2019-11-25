@@ -5,8 +5,8 @@ public class Board {
 	public static final int ROWS = 3;
 	public static final int COLS = 3;
 	public Cell[][] cells;
-	private int currentRow;
-	private int currentCol;
+	int currentRow;
+	int currentCol;
 	
 	/** Constructor to initialize the game board */
 	   public Board() {

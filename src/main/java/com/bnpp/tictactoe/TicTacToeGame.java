@@ -11,6 +11,7 @@ public class TicTacToeGame
 
 	public Board board;
 	public Seed currentPlayer;
+	public GameState currentState;
 	private static Scanner in = new Scanner(System.in); 
 	
 	public TicTacToeGame() {
@@ -21,11 +22,21 @@ public class TicTacToeGame
 	private void initGame() {
 		board.init();
 		this.currentPlayer = Seed.CROSS;
-				
+		this.currentState = GameState.PLAYING;		
 	}
 
 	public void startGame() {
-		 if (currentPlayer == Seed.CROSS) {
+		 playerMove(currentPlayer);
+		 updateGame(currentPlayer);
+	      // Switch player
+	         currentPlayer = (currentPlayer == Seed.CROSS) ? Seed.NOUGHT : Seed.CROSS;
+	}
+	
+	private void playerMove(Seed theSeed) {
+		// TODO Auto-generated method stub
+		boolean validInput = false;
+		 do {
+		 if (theSeed == Seed.CROSS) {
 	            System.out.print("Player 'X', enter your move (row[1-3] column[1-3]): ");
 	         } else {
 	            System.out.print("Player 'O', enter your move (row[1-3] column[1-3]): ");
@@ -34,15 +45,23 @@ public class TicTacToeGame
 	         int col = in.nextInt() - 1;
 	         if (row >= 0 && row < Board.ROWS && col >= 0 && col < Board.COLS
 	               && board.cells[row][col].content == Seed.EMPTY) {
-	            board.cells[row][col].content = currentPlayer;
-
+	            board.cells[row][col].content = theSeed;
+	            board.currentRow = row;
+	            board.currentCol = col;	
+	            validInput = true; 
 	         } 
 	         else {
 	            System.out.println("This move at (" + (row + 1) + "," + (col + 1)
 	                  + ") is not valid. Try again...");
 	         }
-	      // Switch player
-	         currentPlayer = (currentPlayer == Seed.CROSS) ? Seed.NOUGHT : Seed.CROSS;
+		 } while (!validInput);  
 	}
+	
+	 public void updateGame(Seed theSeed) {
+	      if (board.hasWon(theSeed)) {  // check for win
+	         currentState = (theSeed == Seed.CROSS) ? GameState.CROSS_WON : GameState.NOUGHT_WON;
+	      }
+	      // Otherwise, no change to current state (still GameState.PLAYING).
+	   }
    
 }

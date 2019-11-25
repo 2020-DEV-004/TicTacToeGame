@@ -65,4 +65,15 @@ public class TicTacToeGameTest {
 		assertEquals(true,game.board.hasWon(Seed.CROSS));
 		
 	}
+	
+	@Test
+	public void verifyPlayerTwoHasWon() {
+		game.board.cells[0][2].content = Seed.NOUGHT;
+		game.board.cells[1][1].content = Seed.NOUGHT;
+		game.board.cells[2][0].content = Seed.NOUGHT;
+		game.board.currentRow= 2;
+		game.board.currentCol = 0;
+		assertEquals(true,game.board.hasWon(Seed.NOUGHT));
+		
+	}
 }
