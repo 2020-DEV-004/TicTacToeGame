@@ -52,5 +52,18 @@ public class Board {
 		}
 		return true; // no empty cell, it's a draw
 	}
+	
+	public void paint() {
+	    for (int row = 0; row < ROWS; ++row) {
+	       for (int col = 0; col < COLS; ++col) {
+	          cells[row][col].paint();   // each cell paints itself
+	          if (col < COLS - 1) System.out.print("|");
+	       }
+	       System.out.println();
+	       if (row < ROWS - 1) {
+	          System.out.println("-----------");
+	       }
+	    }
+	 }
 
 }

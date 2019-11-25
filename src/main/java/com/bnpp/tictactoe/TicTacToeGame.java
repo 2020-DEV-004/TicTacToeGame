@@ -28,6 +28,7 @@ public class TicTacToeGame
 	public void startGame() {
 		  do {
 		 playerMove(currentPlayer);
+		 board.paint(); 
 		 updateGame(currentPlayer);
 		 if (currentState == GameState.CROSS_WON) {
 	            System.out.println("'X' won! Bye!");
