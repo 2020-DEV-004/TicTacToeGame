@@ -26,11 +26,21 @@ public class TicTacToeGame
 	}
 
 	public void startGame() {
+		  do {
 		 playerMove(currentPlayer);
 		 updateGame(currentPlayer);
+		 if (currentState == GameState.CROSS_WON) {
+	            System.out.println("'X' won! Bye!");
+	         } else if (currentState == GameState.NOUGHT_WON) {
+	            System.out.println("'O' won! Bye!");
+	         } else if (currentState == GameState.DRAW) {
+	            System.out.println("It's Draw! Bye!");
+	         }
 	      // Switch player
 	         currentPlayer = (currentPlayer == Seed.CROSS) ? Seed.NOUGHT : Seed.CROSS;
+	}  while (currentState == GameState.PLAYING); 
 	}
+		  
 	
 	private void playerMove(Seed theSeed) {
 		// TODO Auto-generated method stub
@@ -66,5 +76,7 @@ public class TicTacToeGame
 		      }
 	      // Otherwise, no change to current state (still GameState.PLAYING).
 	   }
-   
+   public static void main(String[] args) {
+	   new TicTacToeGame().startGame();
+   }
 }
