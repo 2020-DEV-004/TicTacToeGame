@@ -61,6 +61,9 @@ public class TicTacToeGame
 	      if (board.hasWon(theSeed)) {  // check for win
 	         currentState = (theSeed == Seed.CROSS) ? GameState.CROSS_WON : GameState.NOUGHT_WON;
 	      }
+	      else if (board.isDraw()) {  // check for draw
+		         currentState = GameState.DRAW;
+		      }
 	      // Otherwise, no change to current state (still GameState.PLAYING).
 	   }
    
