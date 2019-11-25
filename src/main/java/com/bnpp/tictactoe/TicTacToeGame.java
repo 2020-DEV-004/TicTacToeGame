@@ -6,5 +6,11 @@ package com.bnpp.tictactoe;
  */
 public class TicTacToeGame 
 {
+
+	public Board board;
+	
+	public TicTacToeGame() {
+		board = new Board();
+	}
    
 }
